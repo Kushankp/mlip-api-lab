@@ -2,9 +2,16 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 import time
+import os
+from dotenv import load_dotenv
 
-endpoint = "ENTER ENDPOINT HERE"
-key = "ENTER KEY HERE"
+load_dotenv()
+#Hardcoded credentials simply mean that the credentials are clear in the source code, therefore much more accessible to unauthorized users wanting to use your service.
+#Hardcoded credentials involve changing the code every time the credentials change, which is prone to errors.
+#Committing credentials with Git exposes the information to anyone who has access to the repository and can create a wide scope of potential misuse and data breach.
+#Hardcoded credentials are not secure and should be avoided at all costs.
+endpoint = os.getenv("AZURE_ENDPOINT")
+key = os.getenv("AZURE_KEY")
 
 credentials = CognitiveServicesCredentials(key)
 
